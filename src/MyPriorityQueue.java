@@ -12,6 +12,7 @@ import java.util.NoSuchElementException;
  */
 public class MyPriorityQueue<T extends Comparable<? super T>> {
 
+    private final int D_VALUE = 5;
     private dHeap<T> pQueue;
 
     /**
@@ -21,7 +22,7 @@ public class MyPriorityQueue<T extends Comparable<? super T>> {
      */
     public MyPriorityQueue(int initialSize) {
         /* Creates a 5-ary Heap that is saved as pQueue */
-        this.pQueue = new dHeap<T>(5, initialSize, true);
+        this.pQueue = new dHeap<T>(D_VALUE, initialSize, true);
     }
 
     /**
@@ -88,11 +89,7 @@ public class MyPriorityQueue<T extends Comparable<? super T>> {
      */
     public boolean isEmpty() {
         /* Returns true if the heap size is 0, else false */
-        if (this.pQueue.size() == 0){
-            return true;
-        } else {
-            return false;
-        }
+        return this.pQueue.size() == 0;
     }
 
 }

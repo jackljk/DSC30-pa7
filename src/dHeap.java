@@ -15,6 +15,10 @@ import java.util.*;
  */
 public class dHeap<T extends Comparable<? super T>> implements dHeapInterface<T> {
 
+    private final int DEFAULT_SIZE = 6;
+    private final int DEFAULT_D = 2;
+
+
     private T[] heap; // heap array
     private int d; // branching factor
     private int nelems; // number of elements
@@ -27,10 +31,10 @@ public class dHeap<T extends Comparable<? super T>> implements dHeapInterface<T>
     @SuppressWarnings("unchecked")
     public dHeap() {
         /* Constructor, that creates a binary heap by setting d as 2. */
-        this.arrSize = 6;
+        this.arrSize = DEFAULT_SIZE;
         this.heap = (T[]) new Comparable[arrSize];
         this.nelems = 0;
-        this.d = 2;
+        this.d = DEFAULT_D;
         this.isMaxHeap = true;
     }
 
@@ -46,7 +50,7 @@ public class dHeap<T extends Comparable<? super T>> implements dHeapInterface<T>
         this.arrSize = heapSize;
         this.heap = (T[]) new Comparable[heapSize];
         this.nelems = 0;
-        this.d = 2;
+        this.d = DEFAULT_D;
         this.isMaxHeap = true;
     }
 
@@ -175,11 +179,13 @@ public class dHeap<T extends Comparable<? super T>> implements dHeapInterface<T>
                     break;
                 }
                 if (this.isMaxHeap) {
+                    /* If it is a max heap, sets the swap values if curr is less than*/
                     if (swapValue.compareTo(this.heap[i]) < 0){
                         swapValue = this.heap[i];
                         swapIndex = i;
                     }
                 } else {
+                    /* If it is a min heap, sets the swap values if curr is more than */
                     if (swapValue.compareTo(this.heap[i]) > 0){
                         swapValue = this.heap[i];
                         swapIndex = i;
@@ -193,6 +199,7 @@ public class dHeap<T extends Comparable<? super T>> implements dHeapInterface<T>
                 break;
             }
             if (this.isMaxHeap){
+                /* If it is a max heap, swaps when curr is less than */
                 if (swapValue.compareTo(currValue) <= 0){
                     break;
                 } else {
@@ -200,6 +207,7 @@ public class dHeap<T extends Comparable<? super T>> implements dHeapInterface<T>
                     index = swapIndex;
                 }
             } else {
+                /* If it is a min heap, swaps when curr is more than */
                 if (swapValue.compareTo(currValue) >= 0){
                     break;
                 } else {
@@ -220,6 +228,7 @@ public class dHeap<T extends Comparable<? super T>> implements dHeapInterface<T>
         while (index > 0){ //Loops until the index is the root
             int pIndex = parent(index);
             if (this.isMaxHeap){
+                /* If it is a max heap, swaps if parent is less than curr */
                 if (this.heap[index].compareTo(this.heap[pIndex]) <= 0) {
                     break;
                 } else {
@@ -227,6 +236,7 @@ public class dHeap<T extends Comparable<? super T>> implements dHeapInterface<T>
                     index = pIndex;//Updates the nodes index
                 }
             } else {
+                /* If it is a min heap, swaps if parent is more than curr */
                 if (this.heap[index].compareTo(this.heap[pIndex]) >= 0) {
                     break;
                 } else {
@@ -245,7 +255,9 @@ public class dHeap<T extends Comparable<? super T>> implements dHeapInterface<T>
     private void resize() {
         /* Doubles the size of the array */
         T[] resize = (T[]) new Comparable[this.heap.length*2];
-        if (this.nelems >= 0) System.arraycopy(this.heap, 0, resize, 0, this.nelems);
+        if (this.nelems >= 0) {
+            System.arraycopy(this.heap, 0, resize, 0, this.nelems);
+        }
         this.heap = resize;
     }
 

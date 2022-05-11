@@ -21,6 +21,8 @@ public class MyPriorityQueueTest {
         assertEquals(new Integer(90), a.poll());
         assertEquals(new Integer(36), a.poll());
         assertFalse(a.isEmpty());
+        a.clear();
+        assertTrue(a.isEmpty());
     }
 
 }
