@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 public class dHeapTester {
     private dHeap<Integer> twoHeap;
+    private dHeap<Integer> twoHeaptwo;
     private dHeap<Integer> threeHeap;
     private dHeap<Integer> eightHeap;
     private dHeap<Integer> twoHeapMin;
@@ -15,6 +16,7 @@ public class dHeapTester {
     @Before
     public void setUp() throws Exception {
         twoHeap = new dHeap<Integer>();
+        twoHeaptwo = new dHeap<Integer>(10);
         threeHeap = new dHeap<Integer>(3, 12, true);
         eightHeap = new dHeap<Integer>(8, 24, true);
         twoHeapMin = new dHeap<Integer>(2, 12, false);
@@ -120,6 +122,16 @@ public class dHeapTester {
         assertEquals(new Integer(1), threeHeapMin.remove());
         threeHeapMin.clear();
         assertEquals(0, threeHeapMin.size());
+    }
+
+    @Test
+    public void twoHeaptwoTest(){
+        int[] values = new int[]{2, 7, 26, 25, 19, 17, 1, 90, 3, 36};
+        for (int value : values) {
+            twoHeaptwo.add(value);
+        }
+        //Checked with debugger that heap size is exactly 10 and still exactly 10 after adds.
+        assertEquals(10, twoHeaptwo.size());
     }
 
     @Test (expected = NullPointerException.class)
