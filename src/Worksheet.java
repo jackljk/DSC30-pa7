@@ -24,11 +24,11 @@ public class Worksheet {
         TODO: store the values with the heap's array representations for each removal iteration
          */
         int[][] output = new int[5][12];
-        output[0] = new int[]{100, 96, 93, 64, 91, 30, 46, 20, 39, 34, 73, 0};
-        output[1] = new int[]{96, 91, 93, 64, 73, 30, 46, 20, 39, 34, 0, 0};
-        output[2] = new int[]{93, 91, 46, 64, 73, 30, 34, 20, 39, 0, 0, 0};
-        output[3] = new int[]{91, 73, 46, 64, 39, 30, 34, 20, 0, 0, 0, 0};
-        output[4] = new int[]{73, 64, 46, 20, 39, 30, 34, 0, 0, 0, 0, 0};
+        output[0] = new int[]{30, 34, 46, 64, 39, 93, 96, 101, 91, 73, 100, 0};
+        output[1] = new int[]{34, 39, 46, 64, 73, 93, 96, 101, 91, 100, 0, 0};
+        output[2] = new int[]{39, 64, 46, 91, 73, 93, 96, 101, 100, 0, 0, 0};
+        output[3] = new int[]{46, 64, 93, 91, 73, 100, 96, 101, 0, 0, 0, 0};
+        output[4] = new int[]{64, 73, 93, 91, 101, 100, 96, 0, 0, 0, 0, 0};
         return output;
     }
 
@@ -42,7 +42,7 @@ public class Worksheet {
          */
         int[][] output = new int[2][11];
         output[0] = new int[]{89, 70, 87, 85, 27, 52, 59, 29, 72, 79, 46};
-        output[1] = new int[]{89, 87, 85, 46, 52, 29, 59, 70, 70, 27, 79};
+        output[1] = new int[]{89, 87, 85, 46, 52, 29, 59, 70, 72, 27, 79};
         return output;
     }
 
