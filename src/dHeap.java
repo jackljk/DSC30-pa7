@@ -169,7 +169,7 @@ public class dHeap<T extends Comparable<? super T>> implements dHeapInterface<T>
         while (index < this.nelems){
             int cIndex = childStart(index);//Get the furthest left Child node index
             //Looking for the largest child node
-            if (cIndex > this.heap.length){
+            if (cIndex > this.size()){
                 break;
             }
             T swapValue = this.heap[cIndex];

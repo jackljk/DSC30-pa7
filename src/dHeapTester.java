@@ -12,6 +12,7 @@ public class dHeapTester {
     private dHeap<Integer> eightHeap;
     private dHeap<Integer> twoHeapMin;
     private dHeap<Integer> threeHeapMin;
+    private dHeap<Integer> minHeap;
 
     @Before
     public void setUp() throws Exception {
@@ -21,6 +22,17 @@ public class dHeapTester {
         eightHeap = new dHeap<Integer>(8, 24, true);
         twoHeapMin = new dHeap<Integer>(2, 12, false);
         threeHeapMin = new dHeap<Integer>(3, 12, false);
+        minHeap = new dHeap<Integer>(3, 5, false);
+    }
+
+    @Test
+    public void extra(){
+        for (int i = 0;i<9;i++){
+            minHeap.add(i);
+        }
+        for (int i = 0;i<9;i++){
+            minHeap.remove();
+        }
     }
 
     @Test
@@ -98,9 +110,28 @@ public class dHeapTester {
         for (int value : values) {
             twoHeapMin.add(value);
         }
+        assertEquals(16, twoHeapMin.size());
         assertEquals(new Integer(1), twoHeapMin.remove());
         twoHeapMin.clear();
         assertEquals(0, twoHeapMin.size());
+        for (int value : values) {
+            twoHeapMin.add(value);
+            twoHeapMin.add(value);
+            twoHeapMin.add(value);
+            twoHeapMin.add(value);
+        }
+        assertEquals(40, twoHeapMin.size());
+        twoHeapMin.remove();
+        twoHeapMin.remove();
+        twoHeapMin.remove();
+        twoHeapMin.remove();
+        twoHeapMin.remove();
+        twoHeapMin.remove();
+        twoHeapMin.remove();
+        twoHeapMin.remove();
+        twoHeapMin.remove();
+        twoHeapMin.remove();
+        assertEquals(30, twoHeapMin.size());
     }
 
     @Test
@@ -147,5 +178,10 @@ public class dHeapTester {
     @Test (expected = NoSuchElementException.class)
     public void elementNSEE(){
         twoHeap.element();
+    }
+
+    @Test (expected = NoSuchElementException.class)
+    public void elementNSEEMin(){
+        twoHeapMin.remove();
     }
 }
